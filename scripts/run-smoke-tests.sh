@@ -33,6 +33,13 @@ cat <<EOF > $CONFIG
 }
 EOF
 
+# apt update error fixed.
+rm /etc/apt/sources.list
+echo "deb http://archive.debian.org/debian/ jessie main" >> /etc/apt/sources.list
+echo "deb-src http://archive.debian.org/debian/ jessie main" >> /etc/apt/sources.list
+echo "deb http://security.debian.org jessie/updates main" >> /etc/apt/sources.list
+echo "deb-src http://security.debian.org jessie/updates main" >> /etc/apt/sources.list
+
 # Downloading CF CLI.
 # This is a static dependency and really should be part of the Docker image.
 apt update
